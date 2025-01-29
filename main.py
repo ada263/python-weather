@@ -1,14 +1,15 @@
 from services.weather_service import get_weather
 from services.excel_service import save_to_excel
+from gui.interface import generate_interface
 import time
-
-
-def start():
+import threading
+def fetch_data():
     while True:
-
         weather = get_weather()
         save_to_excel(weather)
-        print("zapisane dane")
         time.sleep(30)
-def 
+def start():
+    threading.Thread(target=fetch_data).start()
+    generate_interface()
+
 start()
